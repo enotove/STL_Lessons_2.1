@@ -5,22 +5,11 @@
 
 void sort_arr(std::vector<int>& arr)
 {
-    int h = 1;
-    for (std::vector<int>::iterator i = arr.begin() + 1; i < arr.end(); i++)
-    {
-        for (std::vector<int>::iterator j = arr.begin(); j < arr.end() - h; j++)
-        {
-            if (*j > *(j + 1))
-            {
-                auto temp = *j;
-                *j = *(j + 1);
-                *(j + 1) = temp;
-
-            }
-        }
-        h++;
-
-    }
+   
+    std::sort(arr.begin(), arr.end());
+    auto it = std::unique(arr.begin(), arr.end());
+    arr.erase(it, arr.end());
+   
 }
 
 int main()
@@ -36,8 +25,6 @@ int main()
     
     sort_arr(arr);
  
-    auto it = std::unique(arr.begin(), arr.end());
-    arr.erase(it, arr.end());
     std::cout << "OUT: ";
     for (std::vector<int>::iterator it = arr.begin(); it < arr.end(); it++)
     {
